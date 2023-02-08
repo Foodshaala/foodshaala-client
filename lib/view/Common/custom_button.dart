@@ -34,6 +34,7 @@ class CustomRoundRectButton extends StatelessWidget {
             gradient: linearGradient,
           ),
           child: MaterialButton(
+              padding: EdgeInsets.zero,
               elevation: 0,
               onPressed: callBack??nothing,
               shape: RoundedRectangleBorder(
@@ -46,7 +47,8 @@ class CustomRoundRectButton extends StatelessWidget {
                   SizedBox(
                       height:height??50-20,
                       width: height??50-20,
-                      child: CircularProgressIndicator(color: Colors.white,strokeWidth: 3,)):
+                      child: CircularProgressIndicator(color: Colors.white,strokeWidth: 3,)
+                  ):
               Text(
                 text,
                 style: TextStyle(color: Colors.white,fontSize: fontSize),
