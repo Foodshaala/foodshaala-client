@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:foodshala/constants/device_size.dart';
 
 import '../../constants/color_codes.dart';
@@ -8,36 +9,36 @@ class CustomTextField extends StatefulWidget {
   double? width;
   double? height;
   bool? obscureText;
+  bool? inputNumberOnly;
   TextEditingController? textController;
   String? Function(String?)? validator;
-  CustomTextField({this.hintText,this.textController,this.validator,this.height,this.width,this.obscureText});
+  CustomTextField({this.hintText,this.textController,this.validator,this.height,this.width,this.obscureText,this.inputNumberOnly=false});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  FocusNode _focus=FocusNode();
-  bool isFocused=false;
   @override
   Widget build(BuildContext context) {
     // final controller=Provider.of<TextFieldController>(context);
-    _focus.addListener(() {
-      setState(() {
-        isFocused=_focus.hasFocus;
-      });
-    });
     return Container(
-      margin: isFocused==true?
-        EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom):
-        EdgeInsets.zero,
+      // margin: isFocused==true?
+      //   EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom):
+      //   EdgeInsets.zero,
       width: widget.width??displayWidth(context),
       height: widget.height??50,
       child: TextFormField(
+        keyboardType: widget.inputNumberOnly==true? TextInputType.number:null,
+        inputFormatters:widget.inputNumberOnly==true? <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly
+        ]:null,
         // focusNode: _focus,
         obscureText: widget.obscureText??false,
         controller: widget.textController,
-        validator: widget.validator,
+        validator: (value) {
+          if(value!.isEmpty) return "enter your ${widget.hintText}";
+        },
         minLines: 1,
         // maxLines: 16,
         decoration: InputDecoration(
