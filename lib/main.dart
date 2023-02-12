@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/providers/user_provider.dart';
+import 'package:foodshala/view/Screens/AuthScreens/signin_screen.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signup_screen.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
 import 'package:foodshala/view/Screens/SplashScreen/splash_screen.dart';
@@ -23,6 +24,7 @@ class Foodshaala extends StatelessWidget {
         routes: {
           '/HomeScreen': (context) => HomeScreen(),
           '/SignupScreen': (context) => SignupScreen(),
+          '/SigninScreen':(context) => SigninScreen(),
         },
         theme: ThemeData(
           fontFamily: "Poppins"

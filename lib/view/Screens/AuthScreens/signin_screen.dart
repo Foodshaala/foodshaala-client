@@ -7,12 +7,12 @@ import 'package:foodshala/view/Common/custom_textfield.dart';
 
 import '../../../constants/device_size.dart';
 
-class SignupScreen extends StatefulWidget {
+class SigninScreen extends StatefulWidget {
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _SigninScreenState extends State<SigninScreen> {
   TextEditingController name = TextEditingController();
 
   TextEditingController email = TextEditingController();
@@ -51,7 +51,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ],
                 ),
                 Text(
-                  "Sign up",
+                  "Sign In",
                   style: TextStyle(
                       fontSize: 24,
                       color: primaryColor,
@@ -62,36 +62,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 CustomTextField(
                   prefixIcon: Icon(
-                    Icons.person,
-                    color: mutedTextColor,
-                  ),
-                  textController: name,
-                  hintText: "Name",
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
                     Icons.email_outlined,
                     color: mutedTextColor,
                   ),
                   textController: email,
                   hintText: "Email",
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
-                    Icons.phone,
-                    color: mutedTextColor,
-                  ),
-                  textController: phoneNo,
-                  // inputNumberOnly: true,
-                  hintText: "Phone no.",
                   width: displayWidth(context) * 0.9,
                 ),
                 SizedBox(
@@ -108,33 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: displayWidth(context) * 0.9,
                 ),
                 SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Theme(
-                      data: ThemeData(
-                        primarySwatch: Colors.orange,
-                        unselectedWidgetColor: primaryColor, // Your color
-                      ),
-                      child: Checkbox(
-                        value: acceptedTc,
-                        onChanged: (value) {
-                          acceptedTc = value!;
-                          setState(() {});
-                        },
-                      ),
-                    ),
-                    Text("I accept the", style: TextStyle(color: Colors.black)),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Terms and conditions",
-                          style: TextStyle(
-                              color: primaryColor, fontWeight: FontWeight.bold),
-                        )),
-                  ],
+                  height: 30,
                 ),
                 CustomRectButton(
                   text: "Sign Up",
@@ -164,16 +113,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account ? ",
+                      "Don't have an account ? ",
                     ),
                     InkWell(
                       child: Text(
-                        "Sign In",
+                        "Sign Up",
                         style: TextStyle(
                             color: primaryColor, fontWeight: FontWeight.bold),
                       ),
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, '/SigninScreen');
+                        Navigator.pushReplacementNamed(context, '/SignupScreen');
                       },
                     )
                   ],
