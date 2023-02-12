@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:foodshala/constants/color_codes.dart';
 
 import '../../constants/device_size.dart';
 
-class CustomRoundRectButton extends StatelessWidget {
+class CustomRectButton extends StatelessWidget {
   final String text;
   double? radius;
   double? height;
@@ -12,7 +13,7 @@ class CustomRoundRectButton extends StatelessWidget {
   double? elevation;
   LinearGradient? linearGradient;
   bool loading;
-  CustomRoundRectButton({Key? key,
+  CustomRectButton({Key? key,
     required this.text,this.height,this.width,this.fontSize,this.callBack,this.radius=10,this.linearGradient,this.elevation,this.loading=false});
   VoidCallback nothing = (){};
   @override
@@ -21,25 +22,25 @@ class CustomRoundRectButton extends StatelessWidget {
       width: width??displayWidth(context),
       child: Card(
         elevation: elevation??0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius!),
-        ),
+        // shape: edRectangleBorder(
+        //   borderRadius: BorderRadius.circular(radius!),
+        // ),
         child: Container(
           height: height??50,
           margin: EdgeInsets.zero,
           padding: EdgeInsets.zero,
           decoration: BoxDecoration(
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(radius!),
+            color:primaryColor,
+            // borderRadius: BorderRadius.circular(radius!),
             gradient: linearGradient,
           ),
           child: MaterialButton(
               padding: EdgeInsets.zero,
               elevation: 0,
               onPressed: callBack??nothing,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(radius!),
-              ),
+              // shape: edRectangleBorder(
+              //   borderRadius: BorderRadius.circular(radius!),
+              // ),
               // height: height??50,
               color: Colors.transparent,
               //padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
@@ -51,7 +52,7 @@ class CustomRoundRectButton extends StatelessWidget {
                   ):
               Text(
                 text,
-                style: TextStyle(color: Colors.white,fontSize: fontSize),
+                style: TextStyle(color: Colors.white,fontSize: fontSize,fontWeight: FontWeight.bold),
               )),
         ),
       ),

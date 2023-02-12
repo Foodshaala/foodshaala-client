@@ -24,6 +24,9 @@ class Foodshaala extends StatelessWidget {
           '/HomeScreen': (context) => HomeScreen(),
           '/SignupScreen': (context) => SignupScreen(),
         },
+        theme: ThemeData(
+          fontFamily: "Poppins"
+        ),
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
       ),

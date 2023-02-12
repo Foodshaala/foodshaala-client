@@ -95,7 +95,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
         ),
-        floatingActionButton: CustomRoundRectButton(
+        floatingActionButton: CustomRectButton(
           text: "Sign Up",
           width: displayWidth(context) * 0.9,
           loading: loading,
