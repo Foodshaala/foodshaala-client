@@ -26,13 +26,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TextButton(
-                onPressed: () {},
+              _pageIndex<3?TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/SignupScreen');
+                },
                 child: Text(
                   "Skip",
                   style: TextStyle(color: primaryColor),
                 ),
-              )
+              ):const SizedBox(),
             ],
           ),
           Expanded(
@@ -69,7 +71,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               : CustomRectButton(
                   text: "Get Moody",
                   fontSize: 17,
-                  callBack: () {},
+                  callBack: () {
+                    Navigator.pushReplacementNamed(context, '/SignupScreen');
+                  },
                   width: displayWidth(context)*0.9,
                 ),
           SizedBox(height: 40,),
