@@ -3,6 +3,7 @@ import 'package:foodshala/constants/enums.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/user_provider.dart';
+import '../../../services/auth_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,7 +25,13 @@ class HomeScreen extends StatelessWidget {
               return Text("name : ${user.user!.name}");
           }
         },),
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.logout),
+        onPressed: () async {
+        await AuthService(context: context).signout();
+        Navigator.pushReplacementNamed(context, '/SignupScreen');
+      },),
     );
   }
 }

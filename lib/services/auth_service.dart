@@ -51,4 +51,9 @@ class AuthService {
       print(e.toString());
     }
   }
+
+  Future<void> signout() async {
+    SharedPreferences prefs= await SharedPreferences.getInstance();
+    await prefs.remove('auth-token');
+  }
 }
