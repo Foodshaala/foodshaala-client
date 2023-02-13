@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodshala/constants/color_codes.dart';
 import 'package:foodshala/constants/enums.dart';
 import 'package:provider/provider.dart';
 
@@ -11,9 +12,21 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("home screen"),
-      ),
+      body: Column(
+        children: [
+          Image.asset('assets/images/Banner.png'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Order from faraway cities",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
+                Text("view all",style: TextStyle(color: primaryColor),),
+              ],
+            ),
+          )
+        ],
+      )
     );
   }
 }

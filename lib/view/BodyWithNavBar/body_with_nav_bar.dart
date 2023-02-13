@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/constants/color_codes.dart';
+import 'package:foodshala/view/BodyWithNavBar/body_with_app_bar.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+
+import '../../constants/device_size.dart';
+import 'components/CustomAppBar.dart';
 
 class BodyWithNavBar extends StatefulWidget {
   const BodyWithNavBar({Key? key}) : super(key: key);
@@ -16,7 +20,7 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
 
   List<Widget> _buildScreens() {
     return [
-      HomeScreen(),
+      Center(child: HomeScreen()),
       Center(child: Text("category")),
       Center(child: Text("shop")),
       Center(child: Text("cart")),
@@ -61,12 +65,20 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: _navBarItems(),
-      navBarStyle: NavBarStyle.style3,
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+          child: CustomAppBar(),
+          preferredSize: Size(displayWidth(context), displayHeight(context)*0.18),
+        ),
+        body: PersistentTabView(
+          context,
+          controller: _controller,
+          screens: _buildScreens(),
+          items: _navBarItems(),
+          navBarStyle: NavBarStyle.style3,
+        ),
+      ),
     );
   }
 }
