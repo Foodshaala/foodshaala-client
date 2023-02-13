@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/providers/user_provider.dart';
+import 'package:foodshala/view/BodyWithNavBar/body_with_nav_bar.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signin_screen.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signup_screen.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
@@ -22,6 +23,7 @@ class Foodshaala extends StatelessWidget {
       ],
       child: MaterialApp(
         routes: {
+          '/BodyWithNavBar': (context) => BodyWithNavBar(),
           '/HomeScreen': (context) => HomeScreen(),
           '/SignupScreen': (context) => SignupScreen(),
           '/SigninScreen':(context) => SigninScreen(),

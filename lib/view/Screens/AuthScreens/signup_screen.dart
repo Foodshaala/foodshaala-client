@@ -144,13 +144,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     setState(() {
                       loading = true;
                     });
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate()&&acceptedTc==true) {
                       await AuthService(context: context).signUp(
                         name: name.text,
                         email: email.text,
                         password: password.text,
                         phoneNo: int.parse(phoneNo.text),
                       );
+                    }else if(acceptedTc==false){
+                      showSnackBar(context, 'Please accept the terms and conditions.');
                     }
                     setState(() {
                       loading = false;
@@ -178,6 +180,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     )
                   ],
                 ),
+                TextButton(onPressed: (){
+                  Navigator.pushNamed(context, '/BodyWithNavBar');
+                }, child: Text("Skip"))
               ],
             ),
           ),

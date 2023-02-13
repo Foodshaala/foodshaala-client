@@ -12,26 +12,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Consumer<UserProvider>(builder: (context, user, child) {
-          if(user.userFetchStatus==UserFetchStatus.nil){
-            user.setUser(context);
-          }
-          switch(user.userFetchStatus){
-            case UserFetchStatus.nil:
-              return Text("not able to fetch");
-            case UserFetchStatus.loading:
-              return CircularProgressIndicator();
-            case UserFetchStatus.fetched:
-              return Text("name : ${user.user!.name}");
-          }
-        },),
+        child: Text("home screen"),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.logout),
-        onPressed: () async {
-        await AuthService(context: context).signout();
-        Navigator.pushReplacementNamed(context, '/SignupScreen');
-      },),
     );
   }
 }
