@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:foodshala/controllers/screen_controller.dart';
 import 'package:foodshala/providers/user_provider.dart';
-import 'package:foodshala/view/BodyWithNavBar/body_with_nav_bar.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signin_screen.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signup_screen.dart';
+import 'package:foodshala/view/Screens/BodyWithNavBar/body_with_nav_bar.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
 import 'package:foodshala/view/Screens/SplashScreen/splash_screen.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,8 @@ class Foodshaala extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => UserProvider(),)
+        ChangeNotifierProvider(create: (context) => UserProvider(),),
+        ChangeNotifierProvider(create: (context) => ScreenController(),)
       ],
       child: MaterialApp(
         routes: {

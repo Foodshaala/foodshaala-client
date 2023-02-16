@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/constants/device_size.dart';
-import 'package:foodshala/view/BodyWithNavBar/components/CustomAppBar.dart';
+import 'package:foodshala/view/Screens/BodyWithNavBar/components/CustomAppBar.dart';
 
 class BodyWithAppBar extends StatefulWidget {
   Widget child;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/color_codes.dart';
+import '../../../../constants/color_codes.dart';
 
 class AddressBar extends StatelessWidget {
   const AddressBar({Key? key}) : super(key: key);
