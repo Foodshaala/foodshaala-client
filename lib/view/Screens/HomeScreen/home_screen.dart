@@ -35,14 +35,16 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 10,),
             Container(
-              height: 180,
+              height: 160,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(left: 25),
-                  child: SquareTile(),
+                  padding: const EdgeInsets.only(left: 22),
+                  child: SquareTile(
+                    title: city[index][0],
+                      imagePath: city[index][1]),
                 ),
-                itemCount: 10,
+                itemCount: 3,
               ),
             ),
             // Trending now
@@ -65,14 +67,17 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 10,),
             Container(
-              height: 180,
+              height: 160,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(left: 25),
-                  child: SquareTile(),
+                  padding: const EdgeInsets.only(left: 22),
+                  child: SquareTile(
+                    title: trending[index][0],
+                      imagePath: trending[index][1]
+                  ),
                 ),
-                itemCount: 10,
+                itemCount: 3,
               ),
             )
         ],
@@ -81,3 +86,13 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+const city=[
+  ["Kolkata","assets/images/city/kolkata.png"],
+  ["Agra","assets/images/city/agra.png"],
+  ["Lucknow","assets/images/city/lucknow.png"]
+];
+const trending=[
+  ["Kachori","assets/images/trending/kachori.png"],
+  ["Ladoo","assets/images/trending/ladoo.png"],
+  ["Besan Ladoo","assets/images/trending/ladoo2.png"]
+];

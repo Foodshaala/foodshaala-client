@@ -25,12 +25,14 @@ class CustomNavBarWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           isSelected ? Container(
-            height: 5,
+            height: 4,
             decoration: BoxDecoration(
               color: primaryColor,
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
-          ):const SizedBox(),
+          ): Container(
+            height: 4,
+          ),
           Flexible(
             child: IconTheme(
               data: IconThemeData(

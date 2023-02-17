@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodshala/constants/color_codes.dart';
 import 'package:foodshala/controllers/screen_controller.dart';
-import 'package:foodshala/view/Screens/BodyWithNavBar/body_with_app_bar.dart';
+import 'package:foodshala/services/auth_service.dart';
 import 'package:foodshala/view/Screens/BodyWithNavBar/components/custom_nav_bar.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -15,6 +15,7 @@ import 'components/searchBar.dart';
 
 class BodyWithNavBar extends StatefulWidget {
   const BodyWithNavBar({Key? key}) : super(key: key);
+
 
   @override
   State<BodyWithNavBar> createState() => _BodyWithNavBarState();
@@ -115,6 +116,8 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
                 screenController.currScreenIndex=value;
               },
             ),
+          floatingActionButton: FloatingActionButton(onPressed: () async{
+          },),
         ),
       ),
     );
