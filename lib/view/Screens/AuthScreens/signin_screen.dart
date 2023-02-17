@@ -36,98 +36,100 @@ class _SigninScreenState extends State<SigninScreen> {
           height: displayHeight(context),
           child: Form(
             key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          color: primaryColor,
-                        ))
-                  ],
-                ),
-                Text(
-                  "Sign In",
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: primaryColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
-                    Icons.email_outlined,
-                    color: mutedTextColor,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      TextButton(
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: primaryColor,
+                          ))
+                    ],
                   ),
-                  textController: email,
-                  hintText: "Email",
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
-                    Icons.lock_outline,
-                    color: mutedTextColor,
+                  Text(
+                    "Sign In",
+                    style: TextStyle(
+                        fontSize: 24,
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold),
                   ),
-                  textController: password,
-                  hintText: "Password",
-                  obscureText: true,
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomRectButton(
-                  text: "Sign Up",
-                  width: displayWidth(context) * 0.9,
-                  loading: loading,
-                  callBack: () async {
-                    setState(() {
-                      loading = true;
-                    });
-                    if (_formKey.currentState!.validate()) {
-                      await AuthService(context: context).signUp(
-                        name: name.text,
-                        email: email.text,
-                        password: password.text,
-                        phoneNo: int.parse(phoneNo.text),
-                      );
-                    }
-                    setState(() {
-                      loading = false;
-                    });
-                  },
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account ? ",
+                  SizedBox(
+                    height: 40,
+                  ),
+                  CustomTextField(
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: mutedTextColor,
                     ),
-                    InkWell(
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                            color: primaryColor, fontWeight: FontWeight.bold),
+                    textController: email,
+                    hintText: "Email",
+                    width: displayWidth(context) * 0.9,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  CustomTextField(
+                    prefixIcon: Icon(
+                      Icons.lock_outline,
+                      color: mutedTextColor,
+                    ),
+                    textController: password,
+                    hintText: "Password",
+                    obscureText: true,
+                    width: displayWidth(context) * 0.9,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  CustomRectButton(
+                    text: "Sign Up",
+                    width: displayWidth(context) * 0.9,
+                    loading: loading,
+                    callBack: () async {
+                      setState(() {
+                        loading = true;
+                      });
+                      if (_formKey.currentState!.validate()) {
+                        await AuthService(context: context).signUp(
+                          name: name.text,
+                          email: email.text,
+                          password: password.text,
+                          phoneNo: int.parse(phoneNo.text),
+                        );
+                      }
+                      setState(() {
+                        loading = false;
+                      });
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account ? ",
                       ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(context, '/SignupScreen');
-                      },
-                    )
-                  ],
-                ),
-              ],
+                      InkWell(
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(
+                              color: primaryColor, fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          Navigator.pushReplacementNamed(context, '/SignupScreen');
+                        },
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

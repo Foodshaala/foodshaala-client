@@ -28,11 +28,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
       // margin: isFocused==true?
       //   EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom):
       //   EdgeInsets.zero,
+      decoration: BoxDecoration(
+        color: lightGrey.withOpacity(0.2)
+      ),
       width: widget.width??displayWidth(context),
-      height: widget.height??50,
       child: TextFormField(
-        textAlign: TextAlign.start,
-        textAlignVertical: TextAlignVertical.center,
+        // textAlign: TextAlign.start,
+        // textAlignVertical: TextAlignVertical.center,
         keyboardType: widget.inputNumberOnly==true? TextInputType.number:null,
         inputFormatters:widget.inputNumberOnly==true? <TextInputFormatter>[
           FilteringTextInputFormatter.digitsOnly
@@ -46,22 +48,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
         minLines: 1,
         // maxLines: 16,
         decoration: InputDecoration(
-          fillColor: lightGrey.withOpacity(0.1),
+          // fillColor: lightGrey.withOpacity(0.1),
           prefixIcon: widget.prefixIcon,
-          // suffix: widget.obscureText?IconButton(
-          //   icon: visibility?Icon(Icons.visibility,color: mutedTextColor,):Icon(Icons.visibility_off,color: mutedTextColor,),
-          //   onPressed: (){
-          //     setState(() {
-          //       visibility=!visibility;
-          //     });
-          //   },
-          // ):null,
-          filled: true,
           hintText: widget.hintText??"Unnamed",
           hintStyle: TextStyle(color: mutedTextColor ),
-          isCollapsed: true,
+          // isCollapsed: true,
           // contentPadding: EdgeInsets.only(bottom: 10),
-
+          contentPadding: EdgeInsets.symmetric(horizontal: 8,vertical: 12),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(0),
@@ -69,6 +62,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(0),
+          ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide.none
           ),
           focusedErrorBorder: OutlineInputBorder(
               borderSide: BorderSide(

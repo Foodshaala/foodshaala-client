@@ -36,154 +36,156 @@ class _SignupScreenState extends State<SignupScreen> {
           height: displayHeight(context),
           child: Form(
             key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          color: primaryColor,
-                        ))
-                  ],
-                ),
-                Text(
-                  "Sign up",
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: primaryColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: mutedTextColor,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      TextButton(
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: primaryColor,
+                          ))
+                    ],
                   ),
-                  textController: name,
-                  hintText: "Name",
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
-                    Icons.email_outlined,
-                    color: mutedTextColor,
+                  Text(
+                    "Sign up",
+                    style: TextStyle(
+                        fontSize: 24,
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold),
                   ),
-                  textController: email,
-                  hintText: "Email",
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
-                    Icons.phone,
-                    color: mutedTextColor,
+                  SizedBox(
+                    height: 40,
                   ),
-                  textController: phoneNo,
-                  // inputNumberOnly: true,
-                  hintText: "Phone no.",
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomTextField(
-                  prefixIcon: Icon(
-                    Icons.lock_outline,
-                    color: mutedTextColor,
-                  ),
-                  textController: password,
-                  hintText: "Password",
-                  obscureText: true,
-                  width: displayWidth(context) * 0.9,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Theme(
-                      data: ThemeData(
-                        primarySwatch: Colors.orange,
-                        unselectedWidgetColor: primaryColor, // Your color
-                      ),
-                      child: Checkbox(
-                        value: acceptedTc,
-                        onChanged: (value) {
-                          acceptedTc = value!;
-                          setState(() {});
-                        },
-                      ),
+                  CustomTextField(
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: mutedTextColor,
                     ),
-                    Text("I accept the", style: TextStyle(color: Colors.black)),
-                    TextButton(
-                        onPressed: () {},
+                    textController: name,
+                    hintText: "Name",
+                    width: displayWidth(context) * 0.9,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  CustomTextField(
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: mutedTextColor,
+                    ),
+                    textController: email,
+                    hintText: "Email",
+                    width: displayWidth(context) * 0.9,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  CustomTextField(
+                    prefixIcon: Icon(
+                      Icons.phone,
+                      color: mutedTextColor,
+                    ),
+                    textController: phoneNo,
+                    // inputNumberOnly: true,
+                    hintText: "Phone no.",
+                    width: displayWidth(context) * 0.9,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  CustomTextField(
+                    prefixIcon: Icon(
+                      Icons.lock_outline,
+                      color: mutedTextColor,
+                    ),
+                    textController: password,
+                    hintText: "Password",
+                    obscureText: true,
+                    width: displayWidth(context) * 0.9,
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Theme(
+                        data: ThemeData(
+                          primarySwatch: Colors.orange,
+                          unselectedWidgetColor: primaryColor, // Your color
+                        ),
+                        child: Checkbox(
+                          value: acceptedTc,
+                          onChanged: (value) {
+                            acceptedTc = value!;
+                            setState(() {});
+                          },
+                        ),
+                      ),
+                      Text("I accept the", style: TextStyle(color: Colors.black)),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Terms and conditions",
+                            style: TextStyle(
+                                color: primaryColor, fontWeight: FontWeight.bold),
+                          )),
+                    ],
+                  ),
+                  CustomRectButton(
+                    text: "Sign Up",
+                    width: displayWidth(context) * 0.9,
+                    loading: loading,
+                    callBack: () async {
+                      setState(() {
+                        loading = true;
+                      });
+                      if (_formKey.currentState!.validate()&&acceptedTc==true) {
+                        await AuthService(context: context).signUp(
+                          name: name.text,
+                          email: email.text,
+                          password: password.text,
+                          phoneNo: int.parse(phoneNo.text),
+                        );
+                      }else if(acceptedTc==false){
+                        showSnackBar(context, 'Please accept the terms and conditions.');
+                      }
+                      setState(() {
+                        loading = false;
+                      });
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already have an account ? ",
+                      ),
+                      InkWell(
                         child: Text(
-                          "Terms and conditions",
+                          "Sign In",
                           style: TextStyle(
                               color: primaryColor, fontWeight: FontWeight.bold),
-                        )),
-                  ],
-                ),
-                CustomRectButton(
-                  text: "Sign Up",
-                  width: displayWidth(context) * 0.9,
-                  loading: loading,
-                  callBack: () async {
-                    setState(() {
-                      loading = true;
-                    });
-                    if (_formKey.currentState!.validate()&&acceptedTc==true) {
-                      await AuthService(context: context).signUp(
-                        name: name.text,
-                        email: email.text,
-                        password: password.text,
-                        phoneNo: int.parse(phoneNo.text),
-                      );
-                    }else if(acceptedTc==false){
-                      showSnackBar(context, 'Please accept the terms and conditions.');
-                    }
-                    setState(() {
-                      loading = false;
-                    });
-                  },
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account ? ",
-                    ),
-                    InkWell(
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                            color: primaryColor, fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(context, '/SigninScreen');
-                      },
-                    )
-                  ],
-                ),
-                TextButton(onPressed: (){
-                  Navigator.pushNamed(context, '/BodyWithNavBar');
-                }, child: Text("Skip"))
-              ],
+                        ),
+                        onTap: () {
+                          Navigator.pushReplacementNamed(context, '/SigninScreen');
+                        },
+                      )
+                    ],
+                  ),
+                  TextButton(onPressed: (){
+                    Navigator.pushNamed(context, '/BodyWithNavBar');
+                  }, child: Text("Skip"))
+                ],
+              ),
             ),
           ),
         ),
