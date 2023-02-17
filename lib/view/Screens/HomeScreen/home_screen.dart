@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/constants/color_codes.dart';
+import 'package:foodshala/constants/device_size.dart';
 import 'package:foodshala/constants/enums.dart';
 import 'package:foodshala/view/Common/food_card.dart';
 import 'package:foodshala/view/Screens/HomeScreen/components/square_tile.dart';
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
     return Container(
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset('assets/images/Banner.png'),
             Padding(
@@ -87,7 +89,15 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            FoodCard(),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text("Recommended",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19)),
+            ),
+            const SizedBox(height: 10,),
+            ...List.generate(10, (index) => Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Center(child: FoodCard()),
+            )),
             SizedBox(
               height: 100,
             ),
