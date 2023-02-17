@@ -116,8 +116,8 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
                 screenController.currScreenIndex=value;
               },
             ),
-          floatingActionButton: FloatingActionButton(onPressed: () async{
-          },),
+          // floatingActionButton: FloatingActionButton(onPressed: () async{
+          // },),
         ),
       ),
     );

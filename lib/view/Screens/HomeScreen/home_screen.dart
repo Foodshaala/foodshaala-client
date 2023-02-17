@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/constants/color_codes.dart';
 import 'package:foodshala/constants/enums.dart';
+import 'package:foodshala/view/Common/food_card.dart';
 import 'package:foodshala/view/Screens/HomeScreen/components/square_tile.dart';
 import 'package:provider/provider.dart';
 
@@ -14,8 +15,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: SingleChildScrollView(
-            child: Column(
-        children: [
+        child: Column(
+          children: [
             Image.asset('assets/images/Banner.png'),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -33,7 +34,9 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 160,
               child: ListView.builder(
@@ -41,14 +44,15 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.only(left: 22),
                   child: SquareTile(
-                    title: city[index][0],
-                      imagePath: city[index][1]),
+                      title: city[index][0], imagePath: city[index][1]),
                 ),
                 itemCount: 3,
               ),
             ),
             // Trending now
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Row(
@@ -65,7 +69,9 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 160,
               child: ListView.builder(
@@ -73,26 +79,32 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.only(left: 22),
                   child: SquareTile(
-                    title: trending[index][0],
-                      imagePath: trending[index][1]
-                  ),
+                      title: trending[index][0], imagePath: trending[index][1]),
                 ),
                 itemCount: 3,
               ),
-            )
-        ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            FoodCard(),
+            SizedBox(
+              height: 100,
+            ),
+          ],
+        ),
       ),
-          ),
     );
   }
 }
-const city=[
-  ["Kolkata","assets/images/city/kolkata.png"],
-  ["Agra","assets/images/city/agra.png"],
-  ["Lucknow","assets/images/city/lucknow.png"]
+
+const city = [
+  ["Kolkata", "assets/images/city/kolkata.png"],
+  ["Agra", "assets/images/city/agra.png"],
+  ["Lucknow", "assets/images/city/lucknow.png"]
 ];
-const trending=[
-  ["Kachori","assets/images/trending/kachori.png"],
-  ["Ladoo","assets/images/trending/ladoo.png"],
-  ["Besan Ladoo","assets/images/trending/ladoo2.png"]
+const trending = [
+  ["Kachori", "assets/images/trending/kachori.png"],
+  ["Ladoo", "assets/images/trending/ladoo.png"],
+  ["Besan Ladoo", "assets/images/trending/ladoo2.png"]
 ];
