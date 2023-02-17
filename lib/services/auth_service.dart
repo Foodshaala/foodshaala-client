@@ -15,6 +15,7 @@ import '../models/user_model.dart';
 class AuthService {
   BuildContext context;
   AuthService({required this.context});
+
   //signup
   Future<void> signUp(
       {required String name,
@@ -41,6 +42,7 @@ class AuthService {
             SharedPreferences prefs= await SharedPreferences.getInstance();
             String token=jsonDecode(response.body)['token'];
             await prefs.setString("auth-token", token);
+            await prefs.setBool("signed", true);
             Navigator.pushReplacementNamed(context, '/HomeScreen');
             debugPrint(response.body);
             debugPrint("user account created successfully!");
@@ -50,6 +52,37 @@ class AuthService {
       print("error during sign up");
       print(e.toString());
     }
+  }
+
+  //signin
+  Future<void> signIn({required String email,required String password}) async {
+     try{
+       http.Response response= await http.post(Uri.parse("$uri/api/signin"),
+         body: json.encode({
+           'email': email,
+           'password': password,
+         }),
+         headers: {
+           'Content-Type': 'application/json',
+         },
+       );
+       errorHandling(
+           response: response,
+           context: context,
+           onSuccess: () async {
+             SharedPreferences prefs= await SharedPreferences.getInstance();
+             String token=jsonDecode(response.body)['token'];
+             await prefs.setString("auth-token", token);
+             await prefs.setBool("signed", true);
+             Navigator.pushReplacementNamed(context, '/HomeScreen');
+             debugPrint(response.body);
+             debugPrint("user login successful!");
+           });
+     }catch(e){
+       showSnackBar(context, e.toString());
+       print("error during sign in");
+       print(e.toString());
+     }
   }
 
   Future<void> signout() async {

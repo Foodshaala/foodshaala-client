@@ -13,17 +13,12 @@ class SigninScreen extends StatefulWidget {
 }
 
 class _SigninScreenState extends State<SigninScreen> {
-  TextEditingController name = TextEditingController();
-
   TextEditingController email = TextEditingController();
-
-  TextEditingController phoneNo = TextEditingController();
 
   TextEditingController password = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool loading = false;
-  bool acceptedTc = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
