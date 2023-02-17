@@ -82,7 +82,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     height: 30,
                   ),
                   CustomRectButton(
-                    text: "Sign Up",
+                    text: "Sign In",
                     width: displayWidth(context) * 0.9,
                     loading: loading,
                     callBack: () async {
@@ -90,11 +90,9 @@ class _SigninScreenState extends State<SigninScreen> {
                         loading = true;
                       });
                       if (_formKey.currentState!.validate()) {
-                        await AuthService(context: context).signUp(
-                          name: name.text,
+                        await AuthService(context: context).signIn(
                           email: email.text,
                           password: password.text,
-                          phoneNo: int.parse(phoneNo.text),
                         );
                       }
                       setState(() {

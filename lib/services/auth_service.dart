@@ -43,7 +43,7 @@ class AuthService {
             String token=jsonDecode(response.body)['token'];
             await prefs.setString("auth-token", token);
             await prefs.setBool("signed", true);
-            Navigator.pushReplacementNamed(context, '/HomeScreen');
+            Navigator.pushReplacementNamed(context, '/BodyWithNavBar');
             debugPrint(response.body);
             debugPrint("user account created successfully!");
           });
@@ -74,7 +74,7 @@ class AuthService {
              String token=jsonDecode(response.body)['token'];
              await prefs.setString("auth-token", token);
              await prefs.setBool("signed", true);
-             Navigator.pushReplacementNamed(context, '/HomeScreen');
+             Navigator.pushReplacementNamed(context, '/BodyWithNavBar');
              debugPrint(response.body);
              debugPrint("user login successful!");
            });

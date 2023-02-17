@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodshala/constants/color_codes.dart';
 import 'package:foodshala/constants/device_size.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signup_screen.dart';
+import 'package:foodshala/view/Screens/BodyWithNavBar/body_with_nav_bar.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
 import 'package:foodshala/view/Screens/OnboardingScreens/onboarding_screen.dart';
 import 'package:foodshala/view/Utils/custom_page_route.dart';
@@ -44,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
       await Future.delayed(Duration(seconds: 2));
       bool signed=await isSigned();
       if(signed){
-        isSet==true? Navigator.pushReplacement(context, CustomPageRoute(child: HomeScreen())):
+        isSet==true? Navigator.pushReplacement(context, CustomPageRoute(child: BodyWithNavBar())):
             Navigator.pushReplacement(context, CustomPageRoute(child: SignupScreen()));
       }else{
         Navigator.pushReplacement(context, CustomPageRoute(child: OnboardingScreen()));
