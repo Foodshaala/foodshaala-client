@@ -16,14 +16,13 @@ import 'components/searchBar.dart';
 class BodyWithNavBar extends StatefulWidget {
   const BodyWithNavBar({Key? key}) : super(key: key);
 
-
   @override
   State<BodyWithNavBar> createState() => _BodyWithNavBarState();
 }
 
 class _BodyWithNavBarState extends State<BodyWithNavBar> {
   late PersistentTabController _controller =
-      PersistentTabController(initialIndex: 0);
+  PersistentTabController(initialIndex: 0);
 
   // late TabController tabController;
   // @override
@@ -37,12 +36,9 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
   // }
 
   Widget _buildScreens(int index) {
-    List<Widget> screens=[
+    List<Widget> screens = [
       HomeScreen(),
-      Center(child: Text("category")),
-      Center(child: Text("shop")),
-      Center(child: Text("cart")),
-      Center(child: Text("profile")),
+      Center(child: Text("analytics")),
     ];
     return screens[index];
   }
@@ -61,38 +57,41 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
         activeColorPrimary: primaryColor,
         inactiveColorPrimary: inActiveIconColor,
       ),
-      PersistentBottomNavBarItem(
-        icon: Center(child: FaIcon(FontAwesomeIcons.shop)),
-        iconSize: 25,
-        activeColorPrimary: primaryColor,
-        inactiveColorPrimary: inActiveIconColor,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Center(child: FaIcon(FontAwesomeIcons.cartShopping)),
-        iconSize: 25,
-        activeColorPrimary: primaryColor,
-        inactiveColorPrimary: inActiveIconColor,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Center(child: FaIcon(FontAwesomeIcons.user)),
-        iconSize: 25,
-        activeColorPrimary: primaryColor,
-        inactiveColorPrimary: inActiveIconColor,
-      ),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
     final screenController = Provider.of<ScreenController>(context);
+    Widget _buildPage() {
+      return SafeArea(
+        child: Builder(builder: (context) {
+          return CustomScrollView(
+            slivers: [
+              SliverOverlapInjector(
+                  handle:
+                  NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
+              SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                          (context, index) =>
+                          _buildScreens(screenController.currScreenIndex),
+                      childCount: 1)),
+            ],
+          );
+        }),
+      );
+    }
+
     return SafeArea(
-      child: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-            body: NestedScrollView(
-              floatHeaderSlivers: true,
-              headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                SliverAppBar(
+      child: Scaffold(
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverOverlapAbsorber(
+              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+              sliver: SliverSafeArea(
+                top: false,
+                sliver: SliverAppBar(
                   snap: true,
                   floating: true,
                   pinned: true,
@@ -103,21 +102,17 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
                       child: CustomBottomAppBar(),
                       preferredSize: Size.fromHeight(62)),
                 ),
-              ],
-              body: ListView.builder(
-                itemBuilder: (context, index) => _buildScreens(screenController.currScreenIndex),
-                itemCount: 1,
               ),
             ),
-            bottomNavigationBar: CustomNavBarWidget(
-              selectedIndex: screenController.currScreenIndex,
-              items: _navBarItems(),
-              onItemSelected: (value) {
-                screenController.currScreenIndex=value;
-              },
-            ),
-          // floatingActionButton: FloatingActionButton(onPressed: () async{
-          // },),
+          ],
+          body: _buildPage(),
+        ),
+        bottomNavigationBar: CustomNavBarWidget(
+          selectedIndex: screenController.currScreenIndex,
+          items: _navBarItems(),
+          onItemSelected: (value) {
+            screenController.currScreenIndex = value;
+          },
         ),
       ),
     );

@@ -14,95 +14,93 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset('assets/images/Banner.png'),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Order from faraway cities",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  Text(
-                    "view all",
-                    style: TextStyle(color: primaryColor),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 160,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(left: 22),
-                  child: SquareTile(
-                      title: city[index][0], imagePath: city[index][1]),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset('assets/images/Banner.png'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Order from faraway cities",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
-                itemCount: 3,
-              ),
-            ),
-            // Trending now
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Trending Now",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
-                  ),
-                  Text(
-                    "view all",
-                    style: TextStyle(color: primaryColor),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 160,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(left: 22),
-                  child: SquareTile(
-                      title: trending[index][0], imagePath: trending[index][1]),
+                Text(
+                  "view all",
+                  style: TextStyle(color: primaryColor),
                 ),
-                itemCount: 3,
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: 160,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(left: 22),
+                child: SquareTile(
+                    title: city[index][0], imagePath: city[index][1]),
               ),
+              itemCount: 3,
             ),
-            const SizedBox(
-              height: 20,
+          ),
+          // Trending now
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Trending Now",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                ),
+                Text(
+                  "view all",
+                  style: TextStyle(color: primaryColor),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Text("Recommended",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19)),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 160,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(left: 22),
+                child: SquareTile(
+                    title: trending[index][0], imagePath: trending[index][1]),
+              ),
+              itemCount: 3,
             ),
-            const SizedBox(height: 10,),
-            ...List.generate(10, (index) => Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Center(child: FoodCard()),
-            )),
-            SizedBox(
-              height: 100,
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text("Recommended",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19)),
+          ),
+          const SizedBox(height: 10,),
+          ...List.generate(10, (index) => const Padding(
+            padding: EdgeInsets.only(bottom: 20),
+            child: Center(child: FoodCard()),
+          )),
+          const SizedBox(
+            height: 100,
+          ),
+        ],
       ),
     );
   }
