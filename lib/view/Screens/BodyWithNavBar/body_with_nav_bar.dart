@@ -38,7 +38,10 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
   Widget _buildScreens(int index) {
     List<Widget> screens = [
       HomeScreen(),
-      Center(child: Text("analytics")),
+      Center(child: Text("grid")),
+      Center(child: Text("Restaurants")),
+      Center(child: Text("Cart")),
+      Center(child: Text("Profile")),
     ];
     return screens[index];
   }
@@ -54,6 +57,24 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
       PersistentBottomNavBarItem(
         icon: Center(child: FaIcon(FontAwesomeIcons.grip)),
         iconSize: 30,
+        activeColorPrimary: primaryColor,
+        inactiveColorPrimary: inActiveIconColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Center(child: FaIcon(FontAwesomeIcons.shop)),
+        iconSize: 25,
+        activeColorPrimary: primaryColor,
+        inactiveColorPrimary: inActiveIconColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Center(child: FaIcon(FontAwesomeIcons.cartShopping)),
+        iconSize: 25,
+        activeColorPrimary: primaryColor,
+        inactiveColorPrimary: inActiveIconColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Center(child: FaIcon(FontAwesomeIcons.user)),
+        iconSize: 25,
         activeColorPrimary: primaryColor,
         inactiveColorPrimary: inActiveIconColor,
       ),
