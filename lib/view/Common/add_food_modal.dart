@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/constants/color_codes.dart';
+import 'package:foodshala/view/Common/Tiles/add_on_tile.dart';
 import 'package:foodshala/view/Common/Tiles/quantity_tile.dart';
 
 class AddFoodModal extends StatelessWidget {
@@ -47,6 +48,8 @@ class AddFoodModal extends StatelessWidget {
               children: [
                 SizedBox(height: 10,),
                 QuantityTile(),
+                SizedBox(height: 10,),
+                AddOnTile(),
               ],
             ),
           )
