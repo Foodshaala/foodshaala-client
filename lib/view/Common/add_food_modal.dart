@@ -66,7 +66,9 @@ class AddFoodModal extends StatelessWidget {
             Flexible(child: QuantityButton()),
             Flexible(
               flex: 3,
-                child: CustomRectButton(text: "Add to Cart")),
+                child: CustomRectButton(text: "Add to Cart",callBack: (){
+                  Navigator.pushNamed(context, '/CartScreen');
+                },)),
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

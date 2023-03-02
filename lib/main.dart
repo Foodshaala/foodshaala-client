@@ -4,6 +4,7 @@ import 'package:foodshala/providers/user_provider.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signin_screen.dart';
 import 'package:foodshala/view/Screens/AuthScreens/signup_screen.dart';
 import 'package:foodshala/view/Screens/BodyWithNavBar/body_with_nav_bar.dart';
+import 'package:foodshala/view/Screens/CartScreen/cart_screen.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
 import 'package:foodshala/view/Screens/RestaurantScreen/restaurant_screen.dart';
 import 'package:foodshala/view/Screens/SplashScreen/splash_screen.dart';
@@ -30,7 +31,8 @@ class Foodshaala extends StatelessWidget {
           '/HomeScreen': (context) => HomeScreen(),
           '/SignupScreen': (context) => SignupScreen(),
           '/SigninScreen':(context) => SigninScreen(),
-          '/RestaurantScreen': (context) => RestaurantScreen()
+          '/RestaurantScreen': (context) => RestaurantScreen(),
+          '/CartScreen': (context) => CartScreen(),
         },
         theme: ThemeData(
           fontFamily: "Poppins"

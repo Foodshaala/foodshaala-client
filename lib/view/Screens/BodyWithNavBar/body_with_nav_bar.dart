@@ -4,6 +4,7 @@ import 'package:foodshala/constants/color_codes.dart';
 import 'package:foodshala/controllers/screen_controller.dart';
 import 'package:foodshala/services/auth_service.dart';
 import 'package:foodshala/view/Screens/BodyWithNavBar/components/custom_nav_bar.dart';
+import 'package:foodshala/view/Screens/CartScreen/cart_screen.dart';
 import 'package:foodshala/view/Screens/HomeScreen/home_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,7 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
       HomeScreen(),
       Center(child: Text("grid")),
       Center(child: Text("Restaurants")),
-      Center(child: Text("Cart")),
+      CartScreen(),
       Center(child: Text("Profile")),
     ];
     return screens[index];
@@ -105,7 +106,7 @@ class _BodyWithNavBarState extends State<BodyWithNavBar> {
 
     return SafeArea(
       child: Scaffold(
-        body: NestedScrollView(
+        body: screenController.currScreenIndex==3?CartScreen():NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverOverlapAbsorber(
