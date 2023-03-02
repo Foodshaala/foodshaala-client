@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodshala/constants/color_codes.dart';
 import 'package:foodshala/constants/device_size.dart';
+import 'package:foodshala/view/Screens/RestaurantScreen/components/legacy_tile.dart';
 import 'package:foodshala/view/Screens/RestaurantScreen/components/rating_badge.dart';
 
 class HeadTile extends StatelessWidget {

@@ -13,63 +13,58 @@ class FoodCard extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, '/RestaurantScreen');
-              },
-              child: SizedBox(
-                width: displayWidth(context)*0.9,
-                child: Column(
-                  children: [
-                    Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/FoodItems/Ladoo.png"),
-                            fit: BoxFit.cover),
+            SizedBox(
+              width: displayWidth(context)*0.9,
+              child: Column(
+                children: [
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
                       ),
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/FoodItems/Ladoo.png"),
+                          fit: BoxFit.cover),
                     ),
-                    Container(
-                      decoration: BoxDecoration(color: Color(0xFFF5F5F5)),
-                      padding: EdgeInsets.all(14),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "ARSALAN",
-                            style:
-                                TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
-                          ),
-                          Text(
-                            "Mutton Biryani",
-                            style:
-                                TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(height: 3,),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.access_time_outlined,
-                                color: primaryColor,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Delivery: Tomorrow | 5pm-8pm | Mon",
-                                style: TextStyle(color: primaryColor),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(color: lightGrey.withOpacity(0.6)),
+                    padding: EdgeInsets.all(14),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "ARSALAN",
+                          style:
+                              TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                        ),
+                        Text(
+                          "Mutton Biryani",
+                          style:
+                              TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 3,),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time_outlined,
+                              color: primaryColor,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "Delivery: Tomorrow | 5pm-8pm | Mon",
+                              style: TextStyle(color: primaryColor),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
             Positioned(

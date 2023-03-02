@@ -93,9 +93,14 @@ class HomeScreen extends StatelessWidget {
             child: Text("Recommended",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19)),
           ),
           const SizedBox(height: 10,),
-          ...List.generate(10, (index) => const Padding(
+          ...List.generate(10, (index) => Padding(
             padding: EdgeInsets.only(bottom: 20),
-            child: Center(child: FoodCard()),
+            child: Center(child:InkWell(
+                child: FoodCard(),
+                onTap: (){
+                  Navigator.pushNamed(context, '/RestaurantScreen');
+                },
+            )),
           )),
           const SizedBox(
             height: 100,
